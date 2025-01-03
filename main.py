@@ -34,7 +34,7 @@ def main():
     # Confusion matrix
     y_pred = clf.predict(X_test)
     conf_matrix = metrics.confusion_matrix(y_test, y_pred)
-    metrics.ConfusionMatrixDisplay(conf_matrix, display_labels=[0, 1, 8]).plot(cmap='Blues')
+    metrics.ConfusionMatrixDisplay(conf_matrix, display_labels=[0, 1]).plot(cmap='Blues')
     plt.title("Trained with 0, 1 and 8 | tested with 0 and 1")
     plt.show()
 
@@ -110,10 +110,9 @@ def get_fewshot_train_test_with_additions(mnist):
     # 8's
     is_eight = (mnist.target == '8')
     X_eights = X[is_eight]
-    y_eights = y[is_eight]
     eight_split_index = int(0.7 * len(X_ones))
     X_train_eights = X_eights[eight_split_index:]
-    y_train_eights = y_eights[eight_split_index:]
+    y_train_eights = list('1' * len(X_train_eights))
 
     # Double check
     print (f"len(y_train_zeros) {len(y_train_zeros)}")
