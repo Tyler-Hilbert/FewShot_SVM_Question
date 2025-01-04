@@ -59,6 +59,15 @@ def get_fewshot_train_test(mnist, few_shot_samples, include_8s=False, verbose=Fa
 
     return X_train, y_train, X_test, y_test
 
+# Adds a flipped version of 0 to dataset
+def augment_flip(X, y):
+    is_zero = (y == '0')
+    flipped_images = np.array([np.fliplr(img.reshape(28, 28)).flatten() for img in X[is_zero]])
+    X_augmented = np.vstack([X, flipped_images])
+    y_augmented = np.hstack([y, ['0'] * len(flipped_images)])
+    return X_augmented, y_augmented
+
+
 # View a 784 long ndarray as image (for debugging)
 def view_image(img_array):
     plt.imshow(img_array.reshape(28, 28), cmap='gray')
