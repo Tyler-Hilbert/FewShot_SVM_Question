@@ -60,6 +60,7 @@ def get_fewshot_train_test(mnist, few_shot_samples, include_8s=False, verbose=Fa
     return X_train, y_train, X_test, y_test
 
 # Adds a flipped version of 0 to dataset
+# Note that this may not get consistent results for letters that aren't symmetrical
 def augment_flip(X, y):
     is_zero = (y == '0')
     flipped_images = np.array([np.fliplr(img.reshape(28, 28)).flatten() for img in X[is_zero]])
