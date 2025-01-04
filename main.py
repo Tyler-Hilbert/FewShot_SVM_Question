@@ -2,15 +2,63 @@
 
 from sklearn import datasets, svm, metrics
 import matplotlib.pyplot as plt
-import numpy as np
+from utils import get_fewshot_train_test #, view_image
 
-def main():
+# Test when increasing number of few shot examples
+def increasing_few_shots():
+    # Load data
+    mnist = datasets.fetch_openml('mnist_784', version=1, as_frame=False)
+
+    few_shot_examples = range(1, 1001)
+    f1_scores_no_extra = []
+    f1_scores_extra = []
+
+    ### Just 0's and 1's
+    for i in few_shot_examples:
+        # Test train split
+        X_train, y_train, X_test, y_test = get_fewshot_train_test(mnist, i, False)
+
+        # Train
+        clf = svm.SVC(kernel='linear')
+        clf.fit(X_train, y_train)
+
+        # F1 Score
+        y_pred = clf.predict(X_test)
+        f1_scores_no_extra.append(metrics.f1_score(y_test, y_pred, pos_label='0'))
+
+
+    ### Added 8's
+    for i in few_shot_examples:
+        # Test train split
+        X_train, y_train, X_test, y_test = get_fewshot_train_test(mnist, i, True)
+
+        # Train
+        clf = svm.SVC(kernel='linear')
+        clf.fit(X_train, y_train)
+
+        # F1 Score
+        y_pred = clf.predict(X_test)
+        f1_scores_extra.append(metrics.f1_score(y_test, y_pred, pos_label='0'))
+
+    # Plot
+    plt.plot(few_shot_examples, f1_scores_no_extra, label='Trained with 0 and 1')
+    plt.plot(few_shot_examples, f1_scores_extra, label='Trained with 0, 1 and 8(junk)')
+    plt.legend()
+    plt.grid()
+    plt.title('F1 Score for Increasing Number of 0 Training Examples (MNIST)')
+    plt.xlabel('# of 0 training examples')
+    plt.ylabel('F1 score')
+    plt.show()
+
+
+# Test when hardcoding to 3 few shot examples
+def hardcode_3_few_shot():
     # Load data
     mnist = datasets.fetch_openml('mnist_784', version=1, as_frame=False)
 
     ### Just 0's and 1's
     # Test train split
-    X_train, y_train, X_test, y_test = get_fewshot_train_test(mnist)
+    X_train, y_train, X_test, y_test = get_fewshot_train_test(mnist, 3, False)
 
     # Train
     clf = svm.SVC(kernel='linear')
@@ -25,7 +73,7 @@ def main():
 
     ### Added 8's
     # Test train split
-    X_train, y_train, X_test, y_test = get_fewshot_train_test_with_additions(mnist)
+    X_train, y_train, X_test, y_test = get_fewshot_train_test(mnist, 3, True)
 
     # Train
     clf = svm.SVC(kernel='linear')
@@ -39,102 +87,6 @@ def main():
     plt.show()
 
 
-# Hardcoded for specific question, only using first 3 `0`'s in training set
-def get_fewshot_train_test(mnist):
-    X = mnist.data
-    y = mnist.target
-
-    is_zero = (mnist.target == '0')
-    is_one = (mnist.target == '1')
-
-    # print (len(y[is_zero])) # 6903
-    # print (len(y[is_one])) # 7877
-
-    # 0's
-    X_zeros = X[is_zero]
-    y_zeros = y[is_zero]
-    X_train_zeros = X_zeros[:3]
-    y_train_zeros = y_zeros[:3]
-    zero_split_index = int(0.7 * len(X_zeros))
-    X_test_zeros = X_zeros[zero_split_index:]
-    y_test_zeros = y_zeros[zero_split_index:]
-
-    # 1's
-    X_ones = X[is_one]
-    y_ones = y[is_one]
-    one_split_index = int(0.7 * len(X_ones))
-    X_train_ones, X_test_ones = X_ones[:one_split_index], X_ones[one_split_index:]
-    y_train_ones, y_test_ones = y_ones[:one_split_index], y_ones[one_split_index:]
-
-    # Double check
-    print (f"len(y_train_zeros) {len(y_train_zeros)}")
-    print (f"len(y_test_zeros) {len(X_test_zeros)}")
-    print (f"len(y_train_ones) {len(y_train_ones)}")
-    print (f"len(y_test_ones) {len(X_test_ones)}")
-
-    # Combine training and testing sets
-    X_train = np.vstack((X_train_zeros, X_train_ones))
-    y_train = np.hstack((y_train_zeros, y_train_ones))
-    X_test = np.vstack((X_test_zeros, X_test_ones))
-    y_test = np.hstack((y_test_zeros, y_test_ones))
-
-    return X_train, y_train, X_test, y_test
-
-# Hardcoded for specific question, only using first 3 `0`'s in training set, but with additional points that won't be seen in test set
-def get_fewshot_train_test_with_additions(mnist):
-    X = mnist.data
-    y = mnist.target
-
-    is_zero = (mnist.target == '0')
-    is_one = (mnist.target == '1')
-
-    # print (len(y[is_zero])) # 6903
-    # print (len(y[is_one])) # 7877
-
-    # 0's
-    X_zeros = X[is_zero]
-    y_zeros = y[is_zero]
-    X_train_zeros = X_zeros[:3]
-    y_train_zeros = y_zeros[:3]
-    zero_split_index = int(0.7 * len(X_zeros))
-    X_test_zeros = X_zeros[zero_split_index:]
-    y_test_zeros = y_zeros[zero_split_index:]
-
-    # 1's
-    X_ones = X[is_one]
-    y_ones = y[is_one]
-    one_split_index = int(0.7 * len(X_ones))
-    X_train_ones, X_test_ones = X_ones[:one_split_index], X_ones[one_split_index:]
-    y_train_ones, y_test_ones = y_ones[:one_split_index], y_ones[one_split_index:]
-
-    # 8's
-    is_eight = (mnist.target == '8')
-    X_eights = X[is_eight]
-    eight_split_index = int(0.7 * len(X_ones))
-    X_train_eights = X_eights[eight_split_index:]
-    y_train_eights = list('1' * len(X_train_eights))
-
-    # Double check
-    print (f"len(y_train_zeros) {len(y_train_zeros)}")
-    print (f"len(y_test_zeros) {len(X_test_zeros)}")
-    print (f"len(y_train_ones) {len(y_train_ones)}")
-    print (f"len(y_test_ones) {len(X_test_ones)}")
-    print (f"len(y_train_eights) {len(y_train_eights)}")
-
-    # Combine training and testing sets
-    X_train = np.vstack((X_train_zeros, X_train_ones, X_train_eights))
-    y_train = np.hstack((y_train_zeros, y_train_ones, y_train_eights))
-    X_test = np.vstack((X_test_zeros, X_test_ones))
-    y_test = np.hstack((y_test_zeros, y_test_ones))
-
-    return X_train, y_train, X_test, y_test
-
-# View a 784 long ndarray as image (for debugging)
-def view_image(img_array):
-    plt.imshow(img_array.reshape(28, 28), cmap='gray')
-    plt.axis('off')
-    plt.show()
-
-
 if __name__ == "__main__":
-    main()
+    #hardcode_3_few_shot()
+    increasing_few_shots()
