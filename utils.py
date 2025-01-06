@@ -4,7 +4,11 @@ import matplotlib.pyplot as plt
 # Creates a test train split with 0 as the few shot example
 #   Option to include 8's in dataset (but label them as 1's)
 #   Option for verbose printing
-def get_fewshot_train_test(mnist, few_shot_samples, include_8s=False, verbose=False):
+def get_fewshot_train_test(mnist, few_shot_samples, extra_train_digits=[], verbose=False):
+    if extra_train_digits != [] and extra_train_digits != ['8']:
+        assert ("Not finished implementing")
+
+
     X = mnist.data
     y = mnist.target
 
@@ -31,7 +35,7 @@ def get_fewshot_train_test(mnist, few_shot_samples, include_8s=False, verbose=Fa
     y_train_ones, y_test_ones = y_ones[:one_split_index], y_ones[one_split_index:]
 
     # 8's
-    if include_8s:
+    if extra_train_digits == ['8']:
         is_eight = (mnist.target == '8')
         X_eights = X[is_eight]
         eight_split_index = int(0.7 * len(X_ones))
@@ -44,11 +48,11 @@ def get_fewshot_train_test(mnist, few_shot_samples, include_8s=False, verbose=Fa
         print (f"len(y_test_zeros) {len(X_test_zeros)}")
         print (f"len(y_train_ones) {len(y_train_ones)}")
         print (f"len(y_test_ones) {len(X_test_ones)}")
-        if include_8s:
+        if extra_train_digits == ['8']:
             print (f"len(y_train_eights) {len(y_train_eights)}")
 
     # Combine training and testing sets
-    if include_8s:
+    if extra_train_digits == ['8']:
         X_train = np.vstack((X_train_zeros, X_train_ones, X_train_eights))
         y_train = np.hstack((y_train_zeros, y_train_ones, y_train_eights))
     else:
