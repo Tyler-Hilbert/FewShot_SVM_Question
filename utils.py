@@ -2,13 +2,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Creates a test train split with 0 as the few shot example
-#   Option to include 8's in dataset (but label them as 1's)
+#   Option to train with extra digits.
 #   Option for verbose printing
 def get_fewshot_train_test(mnist, few_shot_samples, extra_train_digits=[], verbose=False):
-    if extra_train_digits != [] and extra_train_digits != ['8']:
-        assert ("Not finished implementing")
-
-
     X = mnist.data
     y = mnist.target
 
@@ -34,13 +30,21 @@ def get_fewshot_train_test(mnist, few_shot_samples, extra_train_digits=[], verbo
     X_train_ones, X_test_ones = X_ones[:one_split_index], X_ones[one_split_index:]
     y_train_ones, y_test_ones = y_ones[:one_split_index], y_ones[one_split_index:]
 
-    # 8's
-    if extra_train_digits == ['8']:
-        is_eight = (mnist.target == '8')
-        X_eights = X[is_eight]
-        eight_split_index = int(0.7 * len(X_ones))
-        X_train_eights = X_eights[eight_split_index:]
-        y_train_eights = list('1' * len(X_train_eights))
+    ### FIXME - this section needs to be cleaned up
+    # Add extra training digits
+    is_extra = np.isin(mnist.target, extra_train_digits)
+    X_train_extras = X[is_extra]
+    y_train_extras = list('1' * len(X_train_extras))
+
+    # Combine training and testing sets
+    if extra_train_digits != []:
+        X_train = np.vstack((X_train_zeros, X_train_ones, X_train_extras))
+        y_train = np.hstack((y_train_zeros, y_train_ones, y_train_extras))
+    else:
+        X_train = np.vstack((X_train_zeros, X_train_ones))
+        y_train = np.hstack((y_train_zeros, y_train_ones))
+    X_test = np.vstack((X_test_zeros, X_test_ones))
+    y_test = np.hstack((y_test_zeros, y_test_ones))
 
     # Double check
     if verbose:
@@ -48,18 +52,9 @@ def get_fewshot_train_test(mnist, few_shot_samples, extra_train_digits=[], verbo
         print (f"len(y_test_zeros) {len(X_test_zeros)}")
         print (f"len(y_train_ones) {len(y_train_ones)}")
         print (f"len(y_test_ones) {len(X_test_ones)}")
-        if extra_train_digits == ['8']:
-            print (f"len(y_train_eights) {len(y_train_eights)}")
-
-    # Combine training and testing sets
-    if extra_train_digits == ['8']:
-        X_train = np.vstack((X_train_zeros, X_train_ones, X_train_eights))
-        y_train = np.hstack((y_train_zeros, y_train_ones, y_train_eights))
-    else:
-        X_train = np.vstack((X_train_zeros, X_train_ones))
-        y_train = np.hstack((y_train_zeros, y_train_ones))
-    X_test = np.vstack((X_test_zeros, X_test_ones))
-    y_test = np.hstack((y_test_zeros, y_test_ones))
+        print (f"len(y_train) {len(y_train)}")
+        ##if extra_train_digits == ['8']:
+        ##    print (f"len(y_train_eights) {len(y_train_eights)}")
 
     return X_train, y_train, X_test, y_test
 
