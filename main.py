@@ -4,8 +4,8 @@ from sklearn import datasets, svm, metrics
 import matplotlib.pyplot as plt
 from utils import get_fewshot_train_test, augment_flip #, view_image
 
-# Test when increasing number of few shot examples
-def increasing_few_shots():
+# Increasing number of few shot examples using 0, 1 and sometimes 8 (commented out)
+def increasing_few_shots_some_digits():
     # Load data
     mnist = datasets.fetch_openml('mnist_784', version=1, as_frame=False)
 
@@ -67,8 +67,8 @@ def increasing_few_shots():
     plt.show()
 
 
-# Test when hardcoding to 3 few shot examples
-def hardcode_3_few_shot():
+# Hardcoding to 3 few shot examples
+def hardcode_3_few_shot_confusion_matrix():
     # Load data
     mnist = datasets.fetch_openml('mnist_784', version=1, as_frame=False)
 
@@ -104,5 +104,5 @@ def hardcode_3_few_shot():
 
 
 if __name__ == "__main__":
-    #hardcode_3_few_shot()
-    increasing_few_shots()
+    #hardcode_3_few_shot_confusion_matrix()
+    increasing_few_shots_some_digits()
