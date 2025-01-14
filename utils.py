@@ -1,60 +1,35 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Creates a test train split with 0 as the few shot example
-#   Option to train with extra digits.
-#   Option for verbose printing
-def get_fewshot_train_test(mnist, few_shot_samples, extra_train_digits=[], verbose=False):
+# Return X_train, X_test, y_train, y_test for `few_show_samples` number of 0 and a 70-30 test train split for 1 and all other digits in `extra_train_digits` within `mnist` dataset provided in sklearn datasets.
+def get_fewshot_train_test(mnist, few_shot_samples, extra_train_digits=[]):
     X = mnist.data
     y = mnist.target
 
+    # Add 0
     is_zero = (mnist.target == '0')
-    is_one = (mnist.target == '1')
-
-    # print (len(y[is_zero])) # 6903
-    # print (len(y[is_one])) # 7877
-
-    # 0's
     X_zeros = X[is_zero]
     y_zeros = y[is_zero]
-    X_train_zeros = X_zeros[:few_shot_samples]
-    y_train_zeros = y_zeros[:few_shot_samples]
+    X_train = X_zeros[:few_shot_samples]
+    y_train = y_zeros[:few_shot_samples]
     zero_split_index = int(0.7 * len(X_zeros))
-    X_test_zeros = X_zeros[zero_split_index:]
-    y_test_zeros = y_zeros[zero_split_index:]
+    X_test = X_zeros[zero_split_index:]
+    y_test = y_zeros[zero_split_index:]
 
-    # 1's
-    X_ones = X[is_one]
-    y_ones = y[is_one]
-    one_split_index = int(0.7 * len(X_ones))
-    X_train_ones, X_test_ones = X_ones[:one_split_index], X_ones[one_split_index:]
-    y_train_ones, y_test_ones = y_ones[:one_split_index], y_ones[one_split_index:]
-
-    ### FIXME - this section needs to be cleaned up
-    # Add extra training digits
-    is_extra = np.isin(mnist.target, extra_train_digits)
-    X_train_extras = X[is_extra]
-    y_train_extras = list('1' * len(X_train_extras))
-
-    # Combine training and testing sets
-    if extra_train_digits != []:
-        X_train = np.vstack((X_train_zeros, X_train_ones, X_train_extras))
-        y_train = np.hstack((y_train_zeros, y_train_ones, y_train_extras))
-    else:
-        X_train = np.vstack((X_train_zeros, X_train_ones))
-        y_train = np.hstack((y_train_zeros, y_train_ones))
-    X_test = np.vstack((X_test_zeros, X_test_ones))
-    y_test = np.hstack((y_test_zeros, y_test_ones))
-
-    # Double check
-    if verbose:
-        print (f"len(y_train_zeros) {len(y_train_zeros)}")
-        print (f"len(y_test_zeros) {len(X_test_zeros)}")
-        print (f"len(y_train_ones) {len(y_train_ones)}")
-        print (f"len(y_test_ones) {len(X_test_ones)}")
-        print (f"len(y_train) {len(y_train)}")
-        ##if extra_train_digits == ['8']:
-        ##    print (f"len(y_train_eights) {len(y_train_eights)}")
+    # Add non-zero values
+    extra_train_digits.append('1')
+    for extra_digit in extra_train_digits: # FIXME - combine all at once instead of 1 digit at a time
+        extra_digit_mask = (mnist.target == extra_digit)
+        X_extra_digit =  X[extra_digit_mask]
+        y_extra_digit = y[extra_digit_mask]
+        extra_digit_split = int(0.7 * len(X_extra_digit))
+        X_train_extra_digit, X_test_extra_digit = X_extra_digit[:extra_digit_split], X_extra_digit[extra_digit_split:]
+        y_train_extra_digit, y_test_digit = y_extra_digit[:extra_digit_split], y_extra_digit[extra_digit_split:]
+        X_train = np.vstack((X_train, X_train_extra_digit))
+        y_train = np.hstack((y_train, y_train_extra_digit))
+        if extra_digit == '1': # Add 1 into the test set
+            X_test = np.vstack((X_test, X_train_extra_digit))
+            y_test = np.hstack((y_test, y_train_extra_digit))
 
     return X_train, y_train, X_test, y_test
 
@@ -66,7 +41,6 @@ def augment_flip(X, y):
     X_augmented = np.vstack([X, flipped_images])
     y_augmented = np.hstack([y, ['0'] * len(flipped_images)])
     return X_augmented, y_augmented
-
 
 # View a 784 long ndarray as image (for debugging)
 def view_image(img_array):

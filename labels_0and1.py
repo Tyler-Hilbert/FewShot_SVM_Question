@@ -14,6 +14,7 @@ def increasing_few_shots_0and1labels(compare_to):
     for i in few_shot_examples:
         # Test train split
         X_train, y_train, X_test, y_test = get_fewshot_train_test(mnist, i, [])
+        y_train[y_train!='0'] = '1' # Replace all non-zero values with 1
 
         # Train
         clf = svm.SVC(kernel='linear')
@@ -33,6 +34,7 @@ def compare_to_augmented_0and1labels(f1_scores_no_extra, mnist, few_shot_example
         # Test train split
         X_train, y_train, X_test, y_test = get_fewshot_train_test(mnist, i, [])
         X_train, y_train = augment_flip(X_train, y_train)
+        y_train[y_train!='0'] = '1' # Replace all non-zero values with 1
 
         # Train
         clf = svm.SVC(kernel='linear')
@@ -58,6 +60,7 @@ def compare_to_8s_0and1labels(f1_scores_no_extra, mnist, few_shot_examples):
     for i in few_shot_examples:
         # Test train split
         X_train, y_train, X_test, y_test = get_fewshot_train_test(mnist, i, ['8'])
+        y_train[y_train!='0'] = '1' # Replace all non-zero values with 1
 
         # Train
         clf = svm.SVC(kernel='linear')
@@ -83,6 +86,7 @@ def compare_to_all_digits_0and1labels(f1_scores_no_extra, mnist, few_shot_exampl
     for i in few_shot_examples:
         # Test train split
         X_train, y_train, X_test, y_test = get_fewshot_train_test(mnist, i, ['2', '3', '4', '5', '6', '7', '8', '9'])
+        y_train[y_train!='0'] = '1' # Replace all non-zero values with 1
 
         # Train
         clf = svm.SVC(kernel='linear')
