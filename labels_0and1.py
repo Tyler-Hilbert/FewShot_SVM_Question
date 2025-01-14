@@ -54,7 +54,7 @@ def compare_to_augmented_0and1labels(f1_scores_no_extra, mnist, few_shot_example
     plt.ylabel('F1 score')
     plt.show()
 
-# Trains with 8's and then plots the comparison (using just 0's and 1's in test set).
+# Trains with 8 (labeled as 1) and then plots the comparison (using just 0's and 1's in test set).
 def compare_to_8s_0and1labels(f1_scores_no_extra, mnist, few_shot_examples):
     f1_scores_extra = []
     for i in few_shot_examples:
