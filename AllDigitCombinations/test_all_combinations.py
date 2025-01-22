@@ -48,9 +48,6 @@ def check(label1, label2):
 
 # Returns test train split with `label1_count` of `label1` and `label2_count` of `label2`
 def test_train_split_2_fewshot_labels(mnist, label1, label1_count, label2, label2_count):
-    X = mnist.data
-    y = mnist.target
-
     X_train_label1, y_train_label1, X_test_label1, y_test_label1 = get_split(mnist, label1, label1_count)
     X_train_label2, y_train_label2, X_test_label2, y_test_label2 = get_split(mnist, label2, label2_count)
 
