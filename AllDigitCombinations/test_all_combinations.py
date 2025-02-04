@@ -9,7 +9,7 @@ def check(label1, label2):
     # Load data
     mnist = datasets.fetch_openml('mnist_784', version=1, as_frame=False)
 
-    few_shot_examples = range(1, 200)
+    few_shot_examples = range(1, 1000, 10)
     f1_scores_3 = []
     f1_scores_50 = []
 
@@ -18,7 +18,7 @@ def check(label1, label2):
         # Test train split
         X_train, y_train, X_test, y_test = test_train_split_2_fewshot_labels(mnist, label1, 3, label2, i)
         # Train
-        clf = svm.SVC(kernel='linear')
+        clf = svm.SVC(kernel='linear', class_weight='balanced')
         clf.fit(X_train, y_train)
         # F1 Score
         y_pred = clf.predict(X_test)
@@ -28,13 +28,13 @@ def check(label1, label2):
         # Test train split
         X_train, y_train, X_test, y_test = test_train_split_2_fewshot_labels(mnist, label1, 50, label2, i)
         # Train
-        clf = svm.SVC(kernel='linear')
+        clf = svm.SVC(kernel='linear', class_weight='balanced')
         clf.fit(X_train, y_train)
         # F1 Score
         y_pred = clf.predict(X_test)
         f1_scores_50.append(metrics.f1_score(y_test, y_pred, pos_label=label1))
 
-    title = f'constant {label1} examples and increasing {label2} examples'
+    title = f'constant {label1} examples and increasing {label2} examples class_weight=balanced'
     plt.title(title)
     plt.xlabel(f'number of {label2} training examples')
     plt.ylabel('f1 score')
