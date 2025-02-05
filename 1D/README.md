@@ -1,1 +1,0 @@
-This isn't using MNIST, but just a 1D generated dataset.
