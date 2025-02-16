@@ -9,10 +9,41 @@ label1 = '0'
 label1_count = 10
 label2 = '1'
 label2_count = 100
+####
+
+# Main
+def test_noise():
+    # Load data
+    mnist = datasets.fetch_openml('mnist_784', version=1, as_frame=False)
+
+
+    ### Without Noise
+    # Test train split
+    X_train, y_train, X_test, y_test = test_train_split_2_fewshot_labels_noise_option(mnist, label1, label1_count, label2, label2_count, False)
+    # Train
+    clf = svm.SVC(kernel='linear', class_weight='balanced')
+    clf.fit(X_train, y_train)
+    # F1 Score
+    y_pred = clf.predict(X_test)
+    print ('without noise:\t', metrics.f1_score(y_test, y_pred, pos_label=label1))
+
+    ### With Noise
+    for num_tests in range(10):
+        X_train, y_train, X_test, y_test = test_train_split_2_fewshot_labels_noise_option(mnist, label1, label1_count, label2, label2_count, True)
+        # Train
+        clf = svm.SVC(kernel='linear', class_weight='balanced')
+        clf.fit(X_train, y_train)
+        # F1 Score
+        y_pred = clf.predict(X_test)
+        print ('with noise:\t', metrics.f1_score(y_test, y_pred, pos_label=label1))
+
 
 # Returns test train split with `label1_count` of `label1` and `label2_count` of `label2`
-def test_train_split_2_fewshot_labels(mnist, label1, label1_count, label2, label2_count):
-    X_train_label1, y_train_label1, X_test_label1, y_test_label1 = get_split_with_noise(mnist, label1, label1_count)
+def test_train_split_2_fewshot_labels_noise_option(mnist, label1, label1_count, label2, label2_count, noise):
+    if noise:
+        X_train_label1, y_train_label1, X_test_label1, y_test_label1 = get_split_with_noise(mnist, label1, label1_count)
+    else:
+        X_train_label1, y_train_label1, X_test_label1, y_test_label1 = get_split(mnist, label1, label1_count)
     X_train_label2, y_train_label2, X_test_label2, y_test_label2 = get_split(mnist, label2, label2_count)
 
     X_train = np.vstack((X_train_label1, X_train_label2,))
@@ -41,6 +72,7 @@ def get_split_with_noise(mnist, label, label_count):
     y_test = y[test_split_index:]
     return X_train, y_train, X_test, y_test
 
+
 # Split with first `label_count` of label in train and last 30% in test
 def get_split(mnist, label, label_count):
     is_label = (mnist.target == label)
@@ -54,17 +86,5 @@ def get_split(mnist, label, label_count):
     return X_train, y_train, X_test, y_test
 
 
-
-
-#### Main
-# Load data
-mnist = datasets.fetch_openml('mnist_784', version=1, as_frame=False)
-
-# Test train split
-X_train, y_train, X_test, y_test = test_train_split_2_fewshot_labels(mnist, label1, label1_count, label2, label2_count)
-# Train
-clf = svm.SVC(kernel='linear', class_weight='balanced')
-clf.fit(X_train, y_train)
-# F1 Score
-y_pred = clf.predict(X_test)
-print (metrics.f1_score(y_test, y_pred, pos_label=label1))
+if __name__ == "__main__":
+    test_noise()
