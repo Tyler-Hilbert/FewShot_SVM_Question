@@ -3,6 +3,7 @@
 from sklearn import datasets, svm, metrics
 import matplotlib.pyplot as plt
 import numpy as np
+import statistics
 
 #### Constants
 label1 = '0'
@@ -27,6 +28,7 @@ def test_noise():
     y_pred = clf.predict(X_test)
     print ('without noise:\t', metrics.f1_score(y_test, y_pred, pos_label=label1))
 
+    noise_f1 = []
     ### With Noise
     for num_tests in range(10):
         X_train, y_train, X_test, y_test = test_train_split_2_fewshot_labels_noise_option(mnist, label1, label1_count, label2, label2_count, True)
@@ -35,7 +37,13 @@ def test_noise():
         clf.fit(X_train, y_train)
         # F1 Score
         y_pred = clf.predict(X_test)
-        print ('with noise:\t', metrics.f1_score(y_test, y_pred, pos_label=label1))
+        f1 = metrics.f1_score(y_test, y_pred, pos_label=label1)
+        noise_f1.append(f1)
+        print ('with noise:\t', f1)
+    # Noise, min max and median
+    print ('noise min', min(noise_f1))
+    print ('noise max', max(noise_f1))
+    print ('noise median', statistics.median(noise_f1))
 
 
 # Returns test train split with `label1_count` of `label1` and `label2_count` of `label2`
