@@ -6,14 +6,27 @@ import numpy as np
 import statistics
 
 #### Constants
-label1 = '0'
+num_noise_tests = 10 # The number of times to randomly generate noise
 label1_count = 10
-label2 = '1'
 label2_count = 100
 ####
 
 # Main
-def test_noise():
+def run_test():
+    print (f'label1_count:{label1_count}, label2_count:{label2_count}, num_noise_test:{num_noise_tests}')
+    print ('\n\n')
+
+    # Iterate over each digit / label
+    labels = ['0','1','2','3','4','5','6','7','8','9']
+    for label1 in labels:
+        for label2 in labels:
+            if label1 == label2:
+                continue
+            test_noise_print_f1(label1, label1_count, label2, label2_count)
+
+
+# Prints F1 score without noise and min/max/median F1 scores with noise
+def test_noise_print_f1(label1, label1_count, label2, label2_count):
     # Load data
     mnist = datasets.fetch_openml('mnist_784', version=1, as_frame=False)
 
@@ -26,12 +39,13 @@ def test_noise():
     clf.fit(X_train, y_train)
     # F1 Score
     y_pred = clf.predict(X_test)
+    print (f'label1:{label1}, label1_count:{label1_count}, label2:{label2}, label2_count{label2_count}')
     print ('without noise:\t', metrics.f1_score(y_test, y_pred, pos_label=label1))
 
 
     ### With Noise
     noise_f1 = []
-    for num_tests in range(10):
+    for num_tests in range(num_noise_tests):
         X_train, y_train, X_test, y_test = test_train_split_2_fewshot_labels_noise_option(mnist, label1, label1_count, label2, label2_count, True)
         # Train
         clf = svm.SVC(kernel='linear', class_weight='balanced')
@@ -40,11 +54,12 @@ def test_noise():
         y_pred = clf.predict(X_test)
         f1 = metrics.f1_score(y_test, y_pred, pos_label=label1)
         noise_f1.append(f1)
-        print ('with noise:\t', f1)
+        #print ('with noise:\t', f1)
     # Noise: min max and median
-    print ('noise min', min(noise_f1))
-    print ('noise max', max(noise_f1))
-    print ('noise median', statistics.median(noise_f1))
+    print ('noise min:\t\t', min(noise_f1))
+    print ('noise max:\t\t', max(noise_f1))
+    print ('noise median:\t', statistics.median(noise_f1))
+    print ('\n\n')
 
 
 # Returns test train split with `label1_count` of `label1` and `label2_count` of `label2`
@@ -119,4 +134,4 @@ def get_split(mnist, label, label_count):
 
 
 if __name__ == "__main__":
-    test_noise()
+    run_test()

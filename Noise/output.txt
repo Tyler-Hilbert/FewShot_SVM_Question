@@ -1,0 +1,724 @@
+label1_count:10, label2_count:100, num_noise_test:10
+
+
+
+label1:0, label1_count:10, label2:1, label2_count100
+without noise:	 0.9747524752475247
+noise min:		 0.9750061865874784
+noise max:		 0.9772839506172839
+noise median:	 0.9762726119405902
+
+
+
+label1:0, label1_count:10, label2:2, label2_count100
+without noise:	 0.8526403096488803
+noise min:		 0.8565133572018727
+noise max:		 0.8593406593406593
+noise median:	 0.8587135788894997
+
+
+
+label1:0, label1_count:10, label2:3, label2_count100
+without noise:	 0.9004512874966817
+noise min:		 0.9019088016967126
+noise max:		 0.9074122922711686
+noise median:	 0.9061138063587013
+
+
+
+label1:0, label1_count:10, label2:4, label2_count100
+without noise:	 0.9395801331285202
+noise min:		 0.9406649616368287
+noise max:		 0.942288049029622
+noise median:	 0.9413418357454597
+
+
+
+label1:0, label1_count:10, label2:5, label2_count100
+without noise:	 0.8475609756097561
+noise min:		 0.851063829787234
+noise max:		 0.8564356435643564
+noise median:	 0.8529654299521849
+
+
+
+label1:0, label1_count:10, label2:6, label2_count100
+without noise:	 0.8845222072678331
+noise min:		 0.8848223896663079
+noise max:		 0.888710109949048
+noise median:	 0.8871292243512845
+
+
+
+label1:0, label1_count:10, label2:7, label2_count100
+without noise:	 0.9297157622739018
+noise min:		 0.9310967741935484
+noise max:		 0.9343967069719578
+noise median:	 0.9335735647350378
+
+
+
+label1:0, label1_count:10, label2:8, label2_count100
+without noise:	 0.9481930755622947
+noise min:		 0.9505799293998991
+noise max:		 0.9532193158953722
+noise median:	 0.9519012843112566
+
+
+
+label1:0, label1_count:10, label2:9, label2_count100
+without noise:	 0.8108882521489972
+noise min:		 0.8139468419548442
+noise max:		 0.8244620611551529
+noise median:	 0.8175473745112025
+
+
+
+label1:1, label1_count:10, label2:0, label2_count100
+without noise:	 0.9989431409849926
+noise min:		 0.9987315010570824
+noise max:		 0.9989431409849926
+noise median:	 0.9989431409849926
+
+
+
+label1:1, label1_count:10, label2:2, label2_count100
+without noise:	 0.9414364640883978
+noise min:		 0.9428382255572721
+noise max:		 0.9475071381506699
+noise median:	 0.945086431072887
+
+
+
+label1:1, label1_count:10, label2:3, label2_count100
+without noise:	 0.9852909827328927
+noise min:		 0.9848839684905258
+noise max:		 0.985519591141397
+noise median:	 0.9853003828011129
+
+
+
+label1:1, label1_count:10, label2:4, label2_count100
+without noise:	 0.9927782497875955
+noise min:		 0.9927782497875955
+noise max:		 0.9934168613293692
+noise median:	 0.9929906538893764
+
+
+
+label1:1, label1_count:10, label2:5, label2_count100
+without noise:	 0.9788975021533161
+noise min:		 0.9788975021533161
+noise max:		 0.9795567032494082
+noise median:	 0.9791263180546589
+
+
+
+label1:1, label1_count:10, label2:6, label2_count100
+without noise:	 0.9821620459918332
+noise min:		 0.9823807477438762
+noise max:		 0.9832546157148991
+noise median:	 0.9825993555316863
+
+
+
+label1:1, label1_count:10, label2:7, label2_count100
+without noise:	 0.975452196382429
+noise min:		 0.9763339070567987
+noise max:		 0.978531558608845
+noise median:	 0.9776536312849162
+
+
+
+label1:1, label1_count:10, label2:8, label2_count100
+without noise:	 0.9479973445452534
+noise min:		 0.9473684210526315
+noise max:		 0.9485310360061852
+noise median:	 0.9482872902921053
+
+
+
+label1:1, label1_count:10, label2:9, label2_count100
+without noise:	 0.9882553918428358
+noise min:		 0.9874012385223148
+noise max:		 0.9884763124199744
+noise median:	 0.9880444064901793
+
+
+
+label1:2, label1_count:10, label2:0, label2_count100
+without noise:	 0.909891248058001
+noise min:		 0.9109730848861284
+noise max:		 0.9158301158301159
+noise median:	 0.913828689370485
+
+
+
+label1:2, label1_count:10, label2:1, label2_count100
+without noise:	 0.8586188145731376
+noise min:		 0.8601683410263372
+noise max:		 0.8657844990548205
+noise median:	 0.86263876777446
+
+
+
+label1:2, label1_count:10, label2:3, label2_count100
+without noise:	 0.8104972375690608
+noise min:		 0.8089700996677741
+noise max:		 0.8172338090010977
+noise median:	 0.8133773599315326
+
+
+
+label1:2, label1_count:10, label2:4, label2_count100
+without noise:	 0.8983761131482452
+noise min:		 0.8995290423861853
+noise max:		 0.9049726633689144
+noise median:	 0.9035453597497393
+
+
+
+label1:2, label1_count:10, label2:5, label2_count100
+without noise:	 0.8138552520416784
+noise min:		 0.8168539325842696
+noise max:		 0.8218181818181818
+noise median:	 0.8193915749647209
+
+
+
+label1:2, label1_count:10, label2:6, label2_count100
+without noise:	 0.764342453662842
+noise min:		 0.7666568828881715
+noise max:		 0.7713450292397661
+noise median:	 0.7706259919027438
+
+
+
+label1:2, label1_count:10, label2:7, label2_count100
+without noise:	 0.917070681296249
+noise min:		 0.9182165605095541
+noise max:		 0.9203764945306537
+noise median:	 0.9188088572155765
+
+
+
+label1:2, label1_count:10, label2:8, label2_count100
+without noise:	 0.8304061470911087
+noise min:		 0.8321927183137148
+noise max:		 0.8345638501503965
+noise median:	 0.833242159090057
+
+
+
+label1:2, label1_count:10, label2:9, label2_count100
+without noise:	 0.8933929981574098
+noise min:		 0.8962982410081386
+noise max:		 0.9003400470834423
+noise median:	 0.8988998720803825
+
+
+
+label1:3, label1_count:10, label2:0, label2_count100
+without noise:	 0.9623006283228613
+noise min:		 0.9625513409036
+noise max:		 0.9635529809316921
+noise median:	 0.9625513409036
+
+
+
+label1:3, label1_count:10, label2:1, label2_count100
+without noise:	 0.9183055975794251
+noise min:		 0.9202114271331487
+noise max:		 0.9226519337016574
+noise median:	 0.9210261569416499
+
+
+
+label1:3, label1_count:10, label2:2, label2_count100
+without noise:	 0.882414151925078
+noise min:		 0.8838659392049883
+noise max:		 0.8865284974093264
+noise median:	 0.8856327723911953
+
+
+
+label1:3, label1_count:10, label2:4, label2_count100
+without noise:	 0.9515892420537897
+noise min:		 0.9528693528693528
+noise max:		 0.9546562652364701
+noise median:	 0.9535082211471857
+
+
+
+label1:3, label1_count:10, label2:5, label2_count100
+without noise:	 0.7399181765049678
+noise min:		 0.7437390797903319
+noise max:		 0.7528187337380746
+noise median:	 0.7469844657110223
+
+
+
+label1:3, label1_count:10, label2:6, label2_count100
+without noise:	 0.9380881624566617
+noise min:		 0.9396636993076162
+noise max:		 0.9409730797727834
+noise median:	 0.940449715838893
+
+
+
+label1:3, label1_count:10, label2:7, label2_count100
+without noise:	 0.9272049689440994
+noise min:		 0.9291026276648487
+noise max:		 0.9325426241660489
+noise median:	 0.9305606965747331
+
+
+
+label1:3, label1_count:10, label2:8, label2_count100
+without noise:	 0.8199672667757774
+noise min:		 0.8222161720664307
+noise max:		 0.8305863280194542
+noise median:	 0.8263032826465443
+
+
+
+label1:3, label1_count:10, label2:9, label2_count100
+without noise:	 0.8856107660455487
+noise min:		 0.8879710893133712
+noise max:		 0.8922602211365389
+noise median:	 0.8892897905573749
+
+
+
+label1:4, label1_count:10, label2:0, label2_count100
+without noise:	 0.9943833943833944
+noise min:		 0.9941377625793845
+noise max:		 0.99462890625
+noise median:	 0.9943833943833944
+
+
+
+label1:4, label1_count:10, label2:1, label2_count100
+without noise:	 0.976267799150637
+noise min:		 0.9757560609847538
+noise max:		 0.9790732436472347
+noise median:	 0.97792740647757
+
+
+
+label1:4, label1_count:10, label2:2, label2_count100
+without noise:	 0.9204278632924602
+noise min:		 0.921875
+noise max:		 0.926031663638723
+noise median:	 0.9232769830949284
+
+
+
+label1:4, label1_count:10, label2:3, label2_count100
+without noise:	 0.9455852156057495
+noise min:		 0.9466666666666667
+noise max:		 0.9488229273285568
+noise median:	 0.9477459016393442
+
+
+
+label1:4, label1_count:10, label2:5, label2_count100
+without noise:	 0.90291521797272
+noise min:		 0.9028632592989029
+noise max:		 0.9096705632306057
+noise median:	 0.9061330599251584
+
+
+
+label1:4, label1_count:10, label2:6, label2_count100
+without noise:	 0.8943832303144316
+noise min:		 0.8955704697986577
+noise max:		 0.8994114499732477
+noise median:	 0.8979918888757629
+
+
+
+label1:4, label1_count:10, label2:7, label2_count100
+without noise:	 0.8904366461291187
+noise min:		 0.8925708177445216
+noise max:		 0.8959276018099548
+noise median:	 0.8943371244724192
+
+
+
+label1:4, label1_count:10, label2:8, label2_count100
+without noise:	 0.9413572343149808
+noise min:		 0.9422290388548057
+noise max:		 0.9449260581336053
+noise median:	 0.9426197508775676
+
+
+
+label1:4, label1_count:10, label2:9, label2_count100
+without noise:	 0.7027027027027027
+noise min:		 0.7077983088005011
+noise max:		 0.7172156619018024
+noise median:	 0.7118114836953029
+
+
+
+label1:5, label1_count:10, label2:0, label2_count100
+without noise:	 0.8769864626250736
+noise min:		 0.8777189888300999
+noise max:		 0.8855140186915887
+noise median:	 0.8799882629107981
+
+
+
+label1:5, label1_count:10, label2:1, label2_count100
+without noise:	 0.805616224648986
+noise min:		 0.8100714951818464
+noise max:		 0.8203389830508474
+noise median:	 0.812528997634024
+
+
+
+label1:5, label1_count:10, label2:2, label2_count100
+without noise:	 0.8243617348508151
+noise min:		 0.8258064516129032
+noise max:		 0.8322639780018332
+noise median:	 0.8283261802575107
+
+
+
+label1:5, label1_count:10, label2:3, label2_count100
+without noise:	 0.5708029197080292
+noise min:		 0.5708045140152894
+noise max:		 0.5781476121562952
+noise median:	 0.574595819223099
+
+
+
+label1:5, label1_count:10, label2:4, label2_count100
+without noise:	 0.8390243902439024
+noise min:		 0.8407914764079147
+noise max:		 0.846410178733717
+noise median:	 0.8430806356154511
+
+
+
+label1:5, label1_count:10, label2:6, label2_count100
+without noise:	 0.8625817965496728
+noise min:		 0.8647686832740213
+noise max:		 0.8712054229295608
+noise median:	 0.8690388703548365
+
+
+
+label1:5, label1_count:10, label2:7, label2_count100
+without noise:	 0.8383160463697377
+noise min:		 0.8376068376068376
+noise max:		 0.8467595396729255
+noise median:	 0.8427290418097066
+
+
+
+label1:5, label1_count:10, label2:8, label2_count100
+without noise:	 0.6606208580397628
+noise min:		 0.6622562674094707
+noise max:		 0.666897746967071
+noise median:	 0.664697786277237
+
+
+
+label1:5, label1_count:10, label2:9, label2_count100
+without noise:	 0.6493783303730017
+noise min:		 0.65225097483162
+noise max:		 0.6596119929453262
+noise median:	 0.6553432413305025
+
+
+
+label1:6, label1_count:10, label2:0, label2_count100
+without noise:	 0.9019399415360085
+noise min:		 0.90199203187251
+noise max:		 0.9074563722897938
+noise median:	 0.904610492845787
+
+
+
+label1:6, label1_count:10, label2:1, label2_count100
+without noise:	 0.8875707737934754
+noise min:		 0.8881703045001348
+noise max:		 0.8917539618587161
+noise median:	 0.8902635825712749
+
+
+
+label1:6, label1_count:10, label2:2, label2_count100
+without noise:	 0.7260950030845157
+noise min:		 0.729621654875423
+noise max:		 0.7327401043264805
+noise median:	 0.7315724815724816
+
+
+
+label1:6, label1_count:10, label2:3, label2_count100
+without noise:	 0.8100172711571675
+noise min:		 0.8117275079045703
+noise max:		 0.8147935779816514
+noise median:	 0.8127512923607122
+
+
+
+label1:6, label1_count:10, label2:4, label2_count100
+without noise:	 0.800464711007842
+noise min:		 0.8011611030478955
+noise max:		 0.805668016194332
+noise median:	 0.8028984501489982
+
+
+
+label1:6, label1_count:10, label2:5, label2_count100
+without noise:	 0.6983926883075954
+noise min:		 0.7032967032967034
+noise max:		 0.7065455684309427
+noise median:	 0.70472005596402
+
+
+
+label1:6, label1_count:10, label2:7, label2_count100
+without noise:	 0.8959058067968959
+noise min:		 0.8967914438502674
+noise max:		 0.900319829424307
+noise median:	 0.898999313289123
+
+
+
+label1:6, label1_count:10, label2:8, label2_count100
+without noise:	 0.7711487088156723
+noise min:		 0.7722419928825622
+noise max:		 0.7755102040816326
+noise median:	 0.773285920086675
+
+
+
+label1:6, label1_count:10, label2:9, label2_count100
+without noise:	 0.8166189111747851
+noise min:		 0.8176352705410822
+noise max:		 0.8257037247654251
+noise median:	 0.8231941633195552
+
+
+
+label1:7, label1_count:10, label2:0, label2_count100
+without noise:	 0.9840018548574079
+noise min:		 0.9835305033634888
+noise max:		 0.9844727694090383
+noise median:	 0.9844727694090383
+
+
+
+label1:7, label1_count:10, label2:1, label2_count100
+without noise:	 0.9235308581263831
+noise min:		 0.9251166216547999
+noise max:		 0.9280117531831538
+noise median:	 0.9265661233791038
+
+
+
+label1:7, label1_count:10, label2:2, label2_count100
+without noise:	 0.8778118609406953
+noise min:		 0.8784473953013279
+noise max:		 0.8821583100025452
+noise median:	 0.8809068247816224
+
+
+
+label1:7, label1_count:10, label2:3, label2_count100
+without noise:	 0.8781234064252932
+noise min:		 0.8801831595013991
+noise max:		 0.8838742393509128
+noise median:	 0.8825992966340757
+
+
+
+label1:7, label1_count:10, label2:4, label2_count100
+without noise:	 0.934629404617254
+noise min:		 0.9351469516638329
+noise max:		 0.9369544131910766
+noise median:	 0.936180538704198
+
+
+
+label1:7, label1_count:10, label2:5, label2_count100
+without noise:	 0.934661161039592
+noise min:		 0.9354368932038835
+noise max:		 0.9393280154701474
+noise median:	 0.9365154964515585
+
+
+
+label1:7, label1_count:10, label2:6, label2_count100
+without noise:	 0.9662178124261753
+noise min:		 0.9674374705049552
+noise max:		 0.9686542540655196
+noise median:	 0.967802792577459
+
+
+
+label1:7, label1_count:10, label2:8, label2_count100
+without noise:	 0.9246157599414492
+noise min:		 0.9266747868453106
+noise max:		 0.9295774647887324
+noise median:	 0.9278851841931157
+
+
+
+label1:7, label1_count:10, label2:9, label2_count100
+without noise:	 0.8309561542525092
+noise min:		 0.8316622691292876
+noise max:		 0.8381851560451088
+noise median:	 0.8345835239998787
+
+
+
+label1:8, label1_count:10, label2:0, label2_count100
+without noise:	 0.9044823906083245
+noise min:		 0.9047746065617498
+noise max:		 0.9085592769803296
+noise median:	 0.9058212495888567
+
+
+
+label1:8, label1_count:10, label2:1, label2_count100
+without noise:	 0.8090408577223993
+noise min:		 0.8114517061885483
+noise max:		 0.8178160919540229
+noise median:	 0.8131581769651302
+
+
+
+label1:8, label1_count:10, label2:2, label2_count100
+without noise:	 0.6877192982456141
+noise min:		 0.6887543803759159
+noise max:		 0.6945765937202664
+noise median:	 0.6939552265254605
+
+
+
+label1:8, label1_count:10, label2:3, label2_count100
+without noise:	 0.7684053651266766
+noise min:		 0.7647234678624814
+noise max:		 0.7759692216632139
+noise median:	 0.7733412227879034
+
+
+
+label1:8, label1_count:10, label2:4, label2_count100
+without noise:	 0.8522663682148853
+noise min:		 0.8538697960324113
+noise max:		 0.8570632488158262
+noise median:	 0.8557880055788005
+
+
+
+label1:8, label1_count:10, label2:5, label2_count100
+without noise:	 0.7008547008547008
+noise min:		 0.704358812381554
+noise max:		 0.7110552763819096
+noise median:	 0.7074014465771166
+
+
+
+label1:8, label1_count:10, label2:6, label2_count100
+without noise:	 0.8209556706966034
+noise min:		 0.8246771879483501
+noise max:		 0.8303826384922901
+noise median:	 0.8275368301407787
+
+
+
+label1:8, label1_count:10, label2:7, label2_count100
+without noise:	 0.8450070323488045
+noise min:		 0.8456564520663481
+noise max:		 0.8521107072966173
+noise median:	 0.8489349657122043
+
+
+
+label1:8, label1_count:10, label2:9, label2_count100
+without noise:	 0.7199001871490954
+noise min:		 0.7206982543640897
+noise max:		 0.7298050139275766
+noise median:	 0.7260592584627072
+
+
+
+label1:9, label1_count:10, label2:0, label2_count100
+without noise:	 0.8635747219962029
+noise min:		 0.8644986449864499
+noise max:		 0.8684850121523089
+noise median:	 0.8671081007975787
+
+
+
+label1:9, label1_count:10, label2:1, label2_count100
+without noise:	 0.9227600411946447
+noise min:		 0.9252504495247881
+noise max:		 0.929923273657289
+noise median:	 0.9273165699721584
+
+
+
+label1:9, label1_count:10, label2:2, label2_count100
+without noise:	 0.767962308598351
+noise min:		 0.7702702702702703
+noise max:		 0.7745901639344263
+noise median:	 0.7724339120263768
+
+
+
+label1:9, label1_count:10, label2:3, label2_count100
+without noise:	 0.676056338028169
+noise min:		 0.67747972551466
+noise max:		 0.6879256965944273
+noise median:	 0.6812810637113971
+
+
+
+label1:9, label1_count:10, label2:4, label2_count100
+without noise:	 0.627349319507453
+noise min:		 0.628719275549806
+noise max:		 0.640795381654907
+noise median:	 0.6368320041960209
+
+
+
+label1:9, label1_count:10, label2:5, label2_count100
+without noise:	 0.6759230041022405
+noise min:		 0.6786389413988658
+noise max:		 0.6918278228321897
+noise median:	 0.6855621363992322
+
+
+
+label1:9, label1_count:10, label2:6, label2_count100
+without noise:	 0.8618152085036794
+noise min:		 0.8602620087336245
+noise max:		 0.8685992955838526
+noise median:	 0.866449427878503
+
+
+
+label1:9, label1_count:10, label2:7, label2_count100
+without noise:	 0.6559037670148782
+noise min:		 0.6552706552706553
+noise max:		 0.66436420722135
+noise median:	 0.660896749826128
+
+
+
+label1:9, label1_count:10, label2:8, label2_count100
+without noise:	 0.7265601447090745
+noise min:		 0.7280939476061428
+noise max:		 0.7401668653158522
+noise median:	 0.7338323353293412
+
+
+
