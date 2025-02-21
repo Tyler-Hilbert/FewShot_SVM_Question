@@ -4,6 +4,7 @@ from sklearn import datasets, svm, metrics
 import matplotlib.pyplot as plt
 import numpy as np
 import statistics
+import seaborn as sns
 
 #### Constants
 num_noise_tests = 10 # The number of times to randomly generate noise
@@ -18,15 +19,40 @@ def run_test():
 
     # Iterate over each digit / label
     labels = ['0','1','2','3','4','5','6','7','8','9']
+    without_noise_f1_full = []
+    with_noise_f1_full = []
     for label1 in labels:
+        new_without_noise_f1 = []
+        new_with_noise_f1 = []
         for label2 in labels:
             if label1 == label2:
+                new_without_noise_f1.append(0)
+                new_with_noise_f1.append(0)
                 continue
-            test_noise_print_f1(label1, label1_count, label2, label2_count)
+            without_noise_f1, with_noise_median_f1 = test_noise_vs_without_noise_f1(label1, label1_count, label2, label2_count)
+            new_without_noise_f1.append(without_noise_f1)
+            new_with_noise_f1.append(with_noise_median_f1)
+        without_noise_f1_full.append(new_without_noise_f1)
+        with_noise_f1_full.append(new_with_noise_f1)
 
+    # Plot heatmaps
+    fig, axes = plt.subplots(1, 2)
 
-# Prints F1 score without noise and min/max/median F1 scores with noise
-def test_noise_print_f1(label1, label1_count, label2, label2_count):
+    sns.heatmap(without_noise_f1_full, annot=True, fmt=".2f", cmap="YlGnBu", ax=axes[0])
+    axes[0].set_title("Without Noise F1 Score")
+    axes[0].set_xlabel("Label 2")
+    axes[0].set_ylabel("Label 1")
+
+    sns.heatmap(with_noise_f1_full, annot=True, fmt=".2f", cmap="YlGnBu", ax=axes[1])
+    axes[1].set_title("With Noise F1 Score")
+    axes[1].set_xlabel("Label 2")
+    axes[1].set_ylabel("Label 1")
+
+    plt.tight_layout()
+    plt.show()
+
+# Returns without noise f1 score and median with noise f1 score
+def test_noise_vs_without_noise_f1(label1, label1_count, label2, label2_count):
     # Load data
     mnist = datasets.fetch_openml('mnist_784', version=1, as_frame=False)
 
@@ -40,7 +66,8 @@ def test_noise_print_f1(label1, label1_count, label2, label2_count):
     # F1 Score
     y_pred = clf.predict(X_test)
     print (f'label1:{label1}, label1_count:{label1_count}, label2:{label2}, label2_count{label2_count}')
-    print ('without noise:\t', metrics.f1_score(y_test, y_pred, pos_label=label1))
+    without_noise_f1 = metrics.f1_score(y_test, y_pred, pos_label=label1)
+    print ('without noise:\t', without_noise_f1)
 
 
     ### With Noise
@@ -56,10 +83,13 @@ def test_noise_print_f1(label1, label1_count, label2, label2_count):
         noise_f1.append(f1)
         #print ('with noise:\t', f1)
     # Noise: min max and median
+    with_noise_median_f1 = statistics.median(noise_f1)
     print ('noise min:\t\t', min(noise_f1))
     print ('noise max:\t\t', max(noise_f1))
     print ('noise median:\t', statistics.median(noise_f1))
     print ('\n\n')
+
+    return (without_noise_f1, with_noise_median_f1)
 
 
 # Returns test train split with `label1_count` of `label1` and `label2_count` of `label2`
